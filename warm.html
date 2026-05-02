@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вебинар SKYLON — Телематика для складской техники</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1c1c1e; background: #fafaf7; line-height: 1.6; }
+
+  /* ── БАЗОВЫЕ КОНТЕЙНЕРЫ ── */
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+  .section { padding: 72px 0; }
+  .section + .section { border-top: 1px solid #e8e6e0; }
+
+  /* ── NAV ── */
+  .nav { background: #fafaf7; border-bottom: 1px solid #e8e6e0; }
+  .nav .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; padding-bottom: 20px; }
+  .nav-logo { font-size: 16px; font-weight: 800; letter-spacing: 2px; }
+  .nav-btn { background: #1c1c1e; color: #fff; font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 100px; text-decoration: none; }
+
+  /* ── HERO ── */
+  .hero { padding: 80px 0 72px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #e8e6e0; border-radius: 100px; padding: 7px 16px; font-size: 13px; color: #666; margin-bottom: 28px; }
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+  .hero h1 { font-size: clamp(32px, 5vw, 60px); font-weight: 800; line-height: 1.1; letter-spacing: -2px; max-width: 740px; margin-bottom: 20px; }
+  .hero h1 mark { background: #fde68a; color: #1c1c1e; padding: 0 6px; border-radius: 6px; font-style: normal; }
+  .hero-sub { font-size: 17px; color: #666; max-width: 500px; margin-bottom: 36px; }
+  .hero-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-dark { display: inline-block; background: #1c1c1e; color: #fff; padding: 14px 30px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; }
+  .btn-dark:hover { background: #333; }
+  .hero-date { font-size: 14px; color: #888; }
+
+  /* ── STATS STRIP ── */
+  .strip { background: #fff; border-top: 1px solid #e8e6e0; border-bottom: 1px solid #e8e6e0; }
+  .strip-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .strip-cell { padding: 28px 0 28px 28px; border-right: 1px solid #e8e6e0; }
+  .strip-cell:first-child { padding-left: 0; }
+  .strip-cell:last-child { border-right: none; }
+  .strip-num { font-size: 36px; font-weight: 800; letter-spacing: -1.5px; line-height: 1; margin-bottom: 6px; }
+  .strip-label { font-size: 13px; color: #888; }
+
+  /* ── EYEBROW + ЗАГОЛОВКИ СЕКЦИЙ ── */
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2.5px; color: #aaa; font-weight: 600; margin-bottom: 14px; }
+  .section-title { font-size: clamp(22px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 32px; }
+
+  /* ── INTRO CARD ── */
+  .intro-card { background: #fff; border-radius: 20px; padding: 40px; border: 1px solid #e8e6e0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .intro-card h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 12px; }
+  .intro-card p { font-size: 15px; color: #555; line-height: 1.8; }
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step { display: flex; gap: 14px; align-items: flex-start; }
+  .step-n { width: 26px; height: 26px; min-width: 26px; border-radius: 50%; background: #fde68a; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #1c1c1e; margin-top: 1px; }
+  .step-text { font-size: 14px; color: #444; line-height: 1.6; }
+
+  /* ── БОЛИ ── */
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pain-card { background: #fff; border-radius: 14px; padding: 22px; border: 1px solid #e8e6e0; display: flex; gap: 14px; align-items: flex-start; }
+  .pain-card:hover { border-color: #1c1c1e; }
+  .pain-n { font-size: 11px; font-weight: 700; color: #ccc; min-width: 20px; padding-top: 3px; }
+  .pain-text { font-size: 15px; color: #333; }
+
+  /* ── MID CTA ── */
+  .mid-cta { background: #fde68a; border-radius: 16px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+  .mid-cta-text p { font-size: 16px; font-weight: 700; color: #1c1c1e; }
+  .mid-cta-text span { font-size: 13px; color: #666; }
+  .btn-dark-sm { display: inline-block; background: #1c1c1e; color: #fff; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+  /* ── ДОКАЗАТЕЛЬСТВА ── */
+  .proof-table { width: 100%; background: #fff; border-radius: 16px; border: 1px solid #e8e6e0; overflow: hidden; border-collapse: separate; border-spacing: 0; }
+  .proof-table th { background: #f5f3ef; text-align: left; padding: 14px 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #999; font-weight: 600; border-bottom: 1px solid #e8e6e0; }
+  .proof-table td { padding: 16px 20px; font-size: 14px; vertical-align: top; border-bottom: 1px solid #f0ede6; }
+  .proof-table tr:last-child td { border-bottom: none; }
+  .proof-table td:first-child { font-weight: 600; color: #1c1c1e; width: 44%; border-right: 1px solid #f0ede6; }
+  .proof-table td:last-child { color: #666; }
+  .proof-desc { font-size: 12px; color: #999; font-weight: 400; display: block; margin-top: 2px; }
+
+  /* ── ПРОГРАММА ── */
+  .prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .prog-card { background: #fff; border-radius: 14px; padding: 22px; border: 1px solid #e8e6e0; display: flex; gap: 16px; align-items: flex-start; }
+  .prog-card.wide { grid-column: span 2; }
+  .prog-n { font-size: 24px; font-weight: 800; color: #ede9e0; line-height: 1; flex-shrink: 0; min-width: 28px; }
+  .prog-title { font-size: 15px; font-weight: 700; color: #1c1c1e; margin-bottom: 6px; }
+  .prog-sub { list-style: none; }
+  .prog-sub li { font-size: 13px; color: #666; padding: 3px 0; display: flex; gap: 8px; }
+  .prog-sub li::before { content: '·'; color: #aaa; flex-shrink: 0; }
+
+  /* ── КОМУ ПОДХОДИТ ── */
+  .aud-list { display: flex; flex-direction: column; gap: 10px; }
+  .aud-item { background: #fff; border-radius: 14px; padding: 20px 24px; border: 1px solid #e8e6e0; display: flex; align-items: center; gap: 18px; }
+  .aud-item:hover { background: #f5f3ef; }
+  .aud-icon { width: 44px; height: 44px; min-width: 44px; background: #fafaf7; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 1px solid #e8e6e0; }
+  .aud-title { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .aud-desc { font-size: 13px; color: #888; }
+
+  /* ── СПИКЕР ── */
+  .speaker-card { background: #fff; border-radius: 20px; padding: 36px; border: 1px solid #e8e6e0; display: flex; gap: 32px; align-items: center; }
+  .speaker-photo { width: 96px; height: 96px; min-width: 96px; border-radius: 50%; background: #ede9e0; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #999; overflow: hidden; }
+  .speaker-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .speaker-name { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
+  .speaker-role { font-size: 14px; color: #888; margin-bottom: 12px; }
+  .speaker-bio { font-size: 14px; color: #555; line-height: 1.7; }
+
+  /* ── ФИНАЛЬНЫЙ CTA ── */
+  .cta-final { background: #1c1c1e; border-radius: 24px; margin: 0 28px 80px; padding: 56px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .cta-final-title { font-size: clamp(24px, 3.5vw, 38px); font-weight: 800; letter-spacing: -1px; color: #fff; margin-bottom: 12px; }
+  .cta-final-sub { font-size: 15px; color: #666; margin-bottom: 24px; }
+  .bonus-box { background: rgba(253,230,138,0.1); border: 1px solid rgba(253,230,138,0.25); border-radius: 12px; padding: 16px 20px; margin-bottom: 28px; }
+  .bonus-box strong { display: block; color: #fde68a; font-size: 14px; margin-bottom: 4px; }
+  .bonus-box span { font-size: 13px; color: #666; }
+  .btn-light { display: inline-block; background: #fff; color: #1c1c1e; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; }
+  .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px 28px; text-align: center; }
+  .cta-box-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 14px; }
+  .cta-box-date { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 4px; }
+  .cta-box-time { font-size: 15px; color: #fde68a; margin-bottom: 24px; font-weight: 600; }
+  .btn-yellow { display: block; background: #fde68a; color: #1c1c1e; padding: 14px; border-radius: 100px; font-size: 15px; font-weight: 700; text-decoration: none; text-align: center; }
+  .btn-yellow:hover { background: #fcd34d; }
+  .cta-note { font-size: 12px; color: #555; margin-top: 10px; }
+
+  /* ── АДАПТИВ ── */
+  @media (max-width: 680px) {
+    .strip-grid { grid-template-columns: 1fr 1fr; }
+    .strip-cell { padding: 20px 0 20px 16px; border-bottom: 1px solid #e8e6e0; }
+    .strip-cell:nth-child(odd) { border-right: 1px solid #e8e6e0; }
+    .strip-cell:nth-child(even) { border-right: none; }
+    .strip-cell:nth-child(3), .strip-cell:nth-child(4) { border-bottom: none; }
+    .intro-card { grid-template-columns: 1fr; gap: 28px; }
+    .pain-grid, .prog-grid { grid-template-columns: 1fr; }
+    .prog-card.wide { grid-column: span 1; }
+    .speaker-card { flex-direction: column; text-align: center; }
+    .cta-final { grid-template-columns: 1fr; margin: 0 16px 60px; padding: 40px 28px; gap: 32px; }
+    .mid-cta { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="wrap">
+    <div class="nav-logo">SKYLON</div>
+    <a href="#" class="nav-btn">Зарегистрироваться</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-badge"><div class="badge-dot"></div>Бесплатный онлайн-вебинар · 26 мая 2025</div>
+    <h1>Склад под контролем: как не терять деньги на <mark>технике, авариях и ТО</mark></h1>
+    <p class="hero-sub">О телематике для складской техники — для тех, кто отвечает за склад</p>
+    <div class="hero-row">
+      <a href="#" class="btn-dark">Зарегистрироваться бесплатно</a>
+      <span class="hero-date">26 мая · 17:00 МСК · ~60 минут</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-grid">
+      <div class="strip-cell"><div class="strip-num">−50%</div><div class="strip-label">аварийных ситуаций</div></div>
+      <div class="strip-cell"><div class="strip-num">−25%</div><div class="strip-label">простоев техники</div></div>
+      <div class="strip-cell"><div class="strip-num">+35%</div><div class="strip-label">эффективности</div></div>
+      <div class="strip-cell"><div class="strip-num">100%</div><div class="strip-label">контроль флота</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="section">
+  <div class="wrap">
+    <div class="intro-card">
+      <div>
+        <h3>Что такое телематика для склада?</h3>
+        <p>Небольшой модуль устанавливается на каждую единицу складской техники. Он собирает данные — удары, моточасы, заряд батареи, кто и когда работал — и передаёт в личный кабинет. Полная картина по всему парку в реальном времени.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n">1</div><div class="step-text">Модуль подключается к технике без вмешательства в конструкцию</div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-text">Данные передаются через GSM или Wi-Fi на сервер в России</div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-text">Вы получаете доступ через веб или мобильное приложение</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- БОЛИ -->
+<div class="section">
+  <div class="wrap">
+    <div class="eyebrow">Для кого</div>
+    <h2 class="section-title">Для директоров по логистике и начальников складов,<br>которые хотят...</h2>
+    <div class="pain-grid">
+      <div class="pain-card"><span class="pain-n">01</span><span class="pain-text">Предугадывать поломки техники — и не ждать, пока она встанет</span></div>
+      <div class="pain-card"><span class="pain-n">02</span><span class="pain-text">Экономить деньги на ТО благодаря предиктивному ремонту</span></div>
+      <div class="pain-card"><span class="pain-n">03</span><span class="pain-text">Минимизировать простои техники «в лазарете»</span></div>
+      <div class="pain-card"><span class="pain-n">04</span><span class="pain-text">Отладить контроль и работу аккумуляторов — чтобы всегда были в строю</span></div>
+      <div class="pain-card"><span class="pain-n">05</span><span class="pain-text">Отслеживать и сокращать аварийные ситуации на складе</span></div>
+      <div class="pain-card"><span class="pain-n">06</span><span class="pain-text">Иметь чёткое понимание: кем и как используется каждая единица техники</span></div>
+    </div>
+    <div class="mid-cta">
+      <div class="mid-cta-text"><p>Участие бесплатное</p><span>Вебинар 26 мая в 17:00 · Онлайн</span></div>
+      <a href="#" class="btn-dark-sm">Зарегистрироваться →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ДОКАЗАТЕЛЬСТВА -->
+<div class="section">
+  <div class="wrap">
+    <div class="eyebrow">Доказательная база</div>
+    <h2 class="section-title">Не хайп — мировой стандарт,<br>о котором вы могли не слышать</h2>
+    <p style="font-size:15px;color:#666;margin-bottom:24px;">Эти технологии работают на сотнях тысяч машин по всему миру уже десятки лет</p>
+    <table class="proof-table">
+      <thead><tr><th>Что делает система</th><th>Доказательства</th></tr></thead>
+      <tbody>
+        <tr><td>Предиктивный ремонт<span class="proof-desc">предупреждает за 2–6 недель до поломки</span></td><td>SKF, Augury — тысячи кейсов, десятилетия практики</td></tr>
+        <tr><td>Контроль аккумуляторов<span class="proof-desc">продлевает жизнь АКБ</span></td><td>Toyota, Crown — встраивают серийно в каждую машину</td></tr>
+        <tr><td>Фиксация ударов и столкновений</td><td>Raymond Corporation — снижение инцидентов на 30–40%</td></tr>
+        <tr><td>Мониторинг и телематика техники</td><td>Komatsu KOMTRAX — 500 000+ машин под контролем</td></tr>
+        <tr><td>Снижение затрат на обслуживание</td><td>Komatsu, Caterpillar, SKF — миллионы подключённых машин</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ПРОГРАММА -->
+<div class="section">
+  <div class="wrap">
+    <div class="eyebrow">Программа</div>
+    <h2 class="section-title">Что разберём на вебинаре</h2>
+    <div class="prog-grid">
+      <div class="prog-card"><div class="prog-n">1</div><div><div class="prog-title">Аналитика на IoT-датчиках: вводное</div></div></div>
+      <div class="prog-card"><div class="prog-n">2</div><div><div class="prog-title">История и отрасли использования</div></div></div>
+      <div class="prog-card wide"><div class="prog-n">3</div><div>
+        <div class="prog-title">IoT-датчики на складе</div>
+        <ul class="prog-sub">
+          <li>Предиктивный ремонт и корректировка ТО</li>
+          <li>Оптимизация работы и обслуживания АКБ</li>
+          <li>Снижение аварийности</li>
+          <li>Отслеживание использования</li>
+        </ul>
+      </div></div>
+      <div class="prog-card"><div class="prog-n">4</div><div><div class="prog-title">Технические особенности внедрения</div></div></div>
+      <div class="prog-card"><div class="prog-n">5</div><div><div class="prog-title">Сроки внедрения и окупаемость</div></div></div>
+      <div class="prog-card"><div class="prog-n">6</div><div><div class="prog-title">Кейсы</div></div></div>
+      <div class="prog-card"><div class="prog-n">7</div><div><div class="prog-title">Вопрос-ответ</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- КОМУ ПОДХОДИТ -->
+<div class="section">
+  <div class="wrap">
+    <div class="eyebrow">Кому подходит</div>
+    <h2 class="section-title">Кому это полезно</h2>
+    <div class="aud-list">
+      <div class="aud-item"><div class="aud-icon">🏭</div><div><div class="aud-title">Торговые и логистические компании</div><div class="aud-desc">Со своим складом или арендованным, от 10 единиц техники</div></div></div>
+      <div class="aud-item"><div class="aud-icon">⚙️</div><div><div class="aud-title">Производственные предприятия</div><div class="aud-desc">У которых есть внутренний склад или цеховая логистика</div></div></div>
+      <div class="aud-item"><div class="aud-icon">🔑</div><div><div class="aud-title">Компании, сдающие технику в аренду</div><div class="aud-desc">У кого есть собственный парк техники, переданный клиентам</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- СПИКЕР -->
+<div class="section">
+  <div class="wrap">
+    <div class="eyebrow">Спикер вебинара</div>
+    <div class="speaker-card">
+      <div class="speaker-photo">МВ</div>
+      <div>
+        <div class="speaker-name">Максим Васин</div>
+        <div class="speaker-role">Исполнительный директор, Skylon</div>
+        <p class="speaker-bio">Руководит внедрением телематики для складской и промышленной техники. Десятки проектов автоматизации на складах России и СНГ. Работает с техникой Toyota, Crown, Linde, Jungheinrich, Xilin, Hangcha и другими марками.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ФИНАЛЬНЫЙ CTA -->
+<div class="cta-final">
+  <div>
+    <div class="cta-final-title">Участие бесплатное</div>
+    <p class="cta-final-sub">Зарегистрируйтесь — ссылку пришлём на email</p>
+    <div class="bonus-box">
+      <strong>Бонус для участников</strong>
+      <span>Пришлите список техники — получите бесплатную оценку готовности автопарка к цифровизации</span>
+    </div>
+    <a href="#" class="btn-light">Зарегистрироваться →</a>
+  </div>
+  <div class="cta-box">
+    <div class="cta-box-eyebrow">Дата и время</div>
+    <div class="cta-box-date">26 мая 2025</div>
+    <div class="cta-box-time">17:00 по Москве</div>
+    <a href="#" class="btn-yellow">Зарегистрироваться бесплатно</a>
+    <div class="cta-note">Онлайн · Бесплатно · ~60 минут</div>
+  </div>
+</div>
+
+</body>
+</html>
