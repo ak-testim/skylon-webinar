@@ -117,8 +117,21 @@
   .btn-yellow:hover { background: #fcd34d; }
   .cta-note { font-size: 12px; color: #555; margin-top: 10px; }
 
+  /* ── ДАТЧИКИ ── */
+  .sensors-section { background: #1c1c1e; padding: 64px 0; }
+  .sensors-section .eyebrow { color: rgba(255,255,255,0.3); }
+  .sensors-section .section-title { color: #fff; margin-bottom: 10px; }
+  .sensors-sub { font-size: 15px; color: rgba(255,255,255,0.4); margin-bottom: 32px; }
+  .sensors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sensor-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+  .sensor-icon { font-size: 22px; margin-bottom: 12px; }
+  .sensor-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .sensor-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 10px; }
+  .sensor-example { font-size: 13px; color: #fde68a; font-style: italic; }
+
   /* ── АДАПТИВ ── */
   @media (max-width: 680px) {
+    .sensors-grid { grid-template-columns: 1fr; }
     .strip-grid { grid-template-columns: 1fr 1fr; }
     .strip-cell { padding: 20px 0 20px 16px; border-bottom: 1px solid #e8e6e0; }
     .strip-cell:nth-child(odd) { border-right: 1px solid #e8e6e0; }
@@ -161,8 +174,8 @@
   <div class="wrap">
     <div class="strip-grid">
       <div class="strip-cell"><div class="strip-num">−50%</div><div class="strip-label">аварийных ситуаций</div></div>
-      <div class="strip-cell"><div class="strip-num">−25%</div><div class="strip-label">простоев техники</div></div>
-      <div class="strip-cell"><div class="strip-num">+35%</div><div class="strip-label">эффективности</div></div>
+      <div class="strip-cell"><div class="strip-num">−25%</div><div class="strip-label">затрат на ТО и ремонты</div></div>
+      <div class="strip-cell"><div class="strip-num">+35%</div><div class="strip-label">эффективности техники</div></div>
       <div class="strip-cell"><div class="strip-num">100%</div><div class="strip-label">контроль флота</div></div>
     </div>
   </div>
@@ -174,7 +187,7 @@
     <div class="intro-card">
       <div>
         <h3>Что такое телематика для склада?</h3>
-        <p>Небольшой модуль устанавливается на каждую единицу складской техники. Он собирает данные — удары, моточасы, заряд батареи, кто и когда работал — и передаёт в личный кабинет. Полная картина по всему парку в реальном времени.</p>
+        <p>Небольшой модуль устанавливается на каждую единицу складской техники. Он собирает данные — вибрацию, температуру, моточасы, заряд батареи, кто и когда работал — и передаёт в личный кабинет. Полная картина по всему парку в реальном времени.</p>
       </div>
       <div class="steps">
         <div class="step"><div class="step-n">1</div><div class="step-text">Модуль подключается к технике без вмешательства в конструкцию</div></div>
@@ -205,6 +218,41 @@
   </div>
 </div>
 
+<!-- ДАТЧИКИ -->
+<div class="sensors-section">
+  <div class="wrap">
+    <div class="eyebrow">Датчики</div>
+    <h2 class="section-title">Что отслеживает система</h2>
+    <p class="sensors-sub">Телематика — это не только контроль людей. Это данные о состоянии техники, которые позволяют чинить до поломки, а не после</p>
+    <div class="sensors-grid">
+      <div class="sensor-card">
+        <div class="sensor-icon">〰️</div>
+        <div class="sensor-title">Вибрация и износ</div>
+        <div class="sensor-desc">Выявляет износ подшипников, цепей мачты, шестерён — за 2–6 недель до поломки. Замена одной детали вместо капитального ремонта.</div>
+        <div class="sensor-example">Пример: «Подшипник мачты — замена через 3 недели»</div>
+      </div>
+      <div class="sensor-card">
+        <div class="sensor-icon">🌡️</div>
+        <div class="sensor-title">Температура гидравлики</div>
+        <div class="sensor-desc">Ловит перегрев насоса и деградацию масла. Замена масла за 5 тыс. рублей вместо ремонта насоса за 80 тыс.</div>
+        <div class="sensor-example">Пример: «Температура масла +12% — заменить масло»</div>
+      </div>
+      <div class="sensor-card">
+        <div class="sensor-icon">🔋</div>
+        <div class="sensor-title">Аккумуляторы</div>
+        <div class="sensor-desc">Деградация ячеек, неправильная зарядка, глубокий разряд. Правильный уход продлевает жизнь АКБ на 30–50%.</div>
+        <div class="sensor-example">Пример: «АКБ №3 — зарядка не по регламенту»</div>
+      </div>
+      <div class="sensor-card">
+        <div class="sensor-icon">💥</div>
+        <div class="sensor-title">Удары и столкновения</div>
+        <div class="sensor-desc">Фиксирует скрытые повреждения техники и стеллажей. С привязкой к оператору, времени и силе удара.</div>
+        <div class="sensor-example">Пример: «Погрузчик №12 — удар 3.2g в 14:37, оператор Иванов»</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ДОКАЗАТЕЛЬСТВА -->
 <div class="section">
   <div class="wrap">
@@ -214,11 +262,11 @@
     <table class="proof-table">
       <thead><tr><th>Что делает система</th><th>Доказательства</th></tr></thead>
       <tbody>
+        <tr><td>Снижение затрат на ТО и ремонты<span class="proof-desc">на 10–30% у крупных операторов флота</span></td><td>Komatsu, Caterpillar, SKF — миллионы машин под мониторингом</td></tr>
         <tr><td>Предиктивный ремонт<span class="proof-desc">предупреждает за 2–6 недель до поломки</span></td><td>SKF, Augury — тысячи кейсов, десятилетия практики</td></tr>
-        <tr><td>Контроль аккумуляторов<span class="proof-desc">продлевает жизнь АКБ</span></td><td>Toyota, Crown — встраивают серийно в каждую машину</td></tr>
+        <tr><td>Контроль аккумуляторов<span class="proof-desc">продлевает жизнь АКБ на 30–50%</span></td><td>Toyota, Crown — встраивают серийно в каждую машину</td></tr>
+        <tr><td>Мониторинг и телематика техники<span class="proof-desc">полный контроль флота в реальном времени</span></td><td>Komatsu KOMTRAX — 500 000+ машин под контролем</td></tr>
         <tr><td>Фиксация ударов и столкновений</td><td>Raymond Corporation — снижение инцидентов на 30–40%</td></tr>
-        <tr><td>Мониторинг и телематика техники</td><td>Komatsu KOMTRAX — 500 000+ машин под контролем</td></tr>
-        <tr><td>Снижение затрат на обслуживание</td><td>Komatsu, Caterpillar, SKF — миллионы подключённых машин</td></tr>
       </tbody>
     </table>
   </div>
