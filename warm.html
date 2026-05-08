@@ -129,6 +129,13 @@
   .sensor-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 10px; }
   .sensor-example { font-size: 13px; color: #fde68a; font-style: italic; }
 
+  /* ── СЦЕНАРИИ ── */
+  .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .scenario-card { border: 1px solid #e8e2d8; border-radius: 14px; padding: 26px; background: #fff; }
+  .scenario-icon { font-size: 24px; margin-bottom: 12px; }
+  .scenario-q { font-size: 16px; font-weight: 700; color: #2c2418; margin-bottom: 10px; line-height: 1.4; }
+  .scenario-a { font-size: 14px; color: #6b5c48; line-height: 1.65; }
+
   /* ── АДАПТИВ ── */
   @media (max-width: 680px) {
     .sensors-grid { grid-template-columns: 1fr; }
@@ -138,7 +145,7 @@
     .strip-cell:nth-child(even) { border-right: none; }
     .strip-cell:nth-child(3), .strip-cell:nth-child(4) { border-bottom: none; }
     .intro-card { grid-template-columns: 1fr; gap: 28px; }
-    .pain-grid, .prog-grid { grid-template-columns: 1fr; }
+    .pain-grid, .prog-grid, .scenarios-grid { grid-template-columns: 1fr; }
     .prog-card.wide { grid-column: span 1; }
     .speaker-card { flex-direction: column; text-align: center; }
     .cta-final { grid-template-columns: 1fr; margin: 0 16px 60px; padding: 40px 28px; gap: 32px; }
@@ -246,6 +253,36 @@
   </div>
 </div>
 
+<!-- СЦЕНАРИИ -->
+<div class="section">
+  <div class="wrap">
+    <div class="eyebrow">Практика</div>
+    <h2 class="section-title">Ситуации, с которыми приходят клиенты</h2>
+    <div class="scenarios-grid">
+      <div class="scenario-card">
+        <div class="scenario-icon">🔑</div>
+        <div class="scenario-q">Машина сломана — и непонятно кто виноват</div>
+        <div class="scenario-a">Карта доступа: каждый оператор работает только со своей техникой. Система фиксирует кто, когда и сколько ездил. Без карты — машина не заводится.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-icon">🔋</div>
+        <div class="scenario-q">Погрузчик встал посреди стеллажей с грузом</div>
+        <div class="scenario-a">При разряде АКБ ниже 20% система отправляет уведомление заранее. Оператор успевает поставить машину на зарядку — без аварийных остановок и брошенного груза.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-icon">🔧</div>
+        <div class="scenario-q">ТО пропустили — и встали в самый напряжённый момент</div>
+        <div class="scenario-a">Контроль моточасов автоматически сигнализирует о приближении ТО. Сервис планируется заранее, в удобное время — а не в авральном режиме в пик нагрузки.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-icon">📊</div>
+        <div class="scenario-q">Дорогой ричтрак используется не по назначению</div>
+        <div class="scenario-a">Аналитика продуктивности показывает какая техника простаивает, а какая перегружена. Видно, когда дорогую машину гоняют там, где справится простой погрузчик.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ДОКАЗАТЕЛЬСТВА -->
 <div class="section">
   <div class="wrap">
@@ -278,8 +315,10 @@
         <ul class="prog-sub">
           <li>Предиктивный ремонт и корректировка ТО</li>
           <li>Оптимизация работы и обслуживания АКБ</li>
-          <li>Снижение аварийности</li>
-          <li>Отслеживание использования</li>
+          <li>Снижение аварийности и контроль слепых зон</li>
+          <li>Диагностика ошибок техники и прогноз сервиса</li>
+          <li>Контроль доступа и учёт ответственности операторов</li>
+          <li>Отслеживание продуктивности флота</li>
         </ul>
       </div></div>
       <div class="prog-card"><div class="prog-n">4</div><div><div class="prog-title">Технические особенности внедрения</div></div></div>
